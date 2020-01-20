@@ -177,7 +177,7 @@ MiracuolusDeer.prototype.destinationAutocompleteInit = function (codeInput, city
 
 //init miraculousdeer
 let miracle = new MiracuolusDeer({
-		apiKey: "DEMO", //REQUIRED
+		apiKey: "9f0f28-fb7855-4b9161-637d4e-071349", //REQUIRED
 	});
 
 //init autocomplete
