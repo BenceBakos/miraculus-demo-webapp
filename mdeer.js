@@ -5,6 +5,10 @@ const MiracuolusDeer = function (ops) {
 		this.apiKey = ops.apiKey;
 	else
 		throw "Api key is not correct";
+	
+	if (typeof(ops.formEl) != 'undefined' && ops.formEl != null)
+		throw "formEl does not exists";
+	
 };
 
 //******************
@@ -15,6 +19,19 @@ const MiracuolusDeer = function (ops) {
  *Return with promise within parsed json of response
  *@param {str} type type of request (todeay,tomorrow,randomtoday,randomtomorrow)
  */
+
+
+
+MiracuolusDeer.prototype.dateByName = function (name) {
+	return fetch("https://www.miraculousdeer.hu/api/namedays/?name=" + name + "&key=" + this.apiKey, {
+		"mode": "cors"
+	})
+	.then(function (res) {
+		return res.json();
+	}).then(function (json) {
+		return JSON.parse(json);
+	});
+};
 
 MiracuolusDeer.prototype.namedayByType = function (type) {
 	return fetch("https://www.miraculousdeer.hu/api/namedays/?type=" + type + "&key=" + this.apiKey, {
@@ -178,6 +195,7 @@ MiracuolusDeer.prototype.destinationAutocompleteInit = function (codeInput, city
 //init miraculousdeer
 let miracle = new MiracuolusDeer({
 		apiKey: "9f0f28-fb7855-4b9161-637d4e-071349", //REQUIRED
+		formEl:document.getElementById("myForm")
 	});
 
 //init autocomplete
