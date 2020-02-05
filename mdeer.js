@@ -6,7 +6,7 @@ const MiracuolusDeer = function (ops) {
 	else
 		throw "Api key is not correct";
 	
-	if (typeof(ops.formEl) != 'undefined' && ops.formEl != null)
+	if (typeof(ops.formEl) == 'undefined' || ops.formEl == null)
 		throw "formEl does not exists";
 	
 };
